@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import './downloader.dart';
 
 void main() => runApp(const MaterialApp(home: PlayStoreDownloader()));
 
@@ -65,7 +66,7 @@ class _PlayStoreDownloaderState extends State<PlayStoreDownloader> {
             AsyncSnapshot<WebViewController> controller) {
           return FloatingActionButton(
             onPressed: () {
-              controller.data!.runJavascript("alert('js')");
+              controller.data!.runJavascriptReturningResult(downloaderScript);
             },
             child: const Icon(Icons.download),
           );
